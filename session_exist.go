@@ -35,6 +35,9 @@ func (session *Session) Exist(bean ...interface{}) (bool, error) {
 			}
 
 			tableName = session.statement.Engine.Quote(tableName)
+			if len(session.statement.JoinStr) > 0 {
+				joinStr = session.statement.JoinStr
+			}
 
 			if session.statement.cond.IsValid() {
 				condSQL, condArgs, err := builder.ToSQL(session.statement.cond)
@@ -47,8 +50,7 @@ func (session *Session) Exist(bean ...interface{}) (bool, error) {
 				} else if session.engine.dialect.DBType() == core.ORACLE {
 					sqlStr = fmt.Sprintf("SELECT * FROM %s WHERE (%s) AND ROWNUM=1", tableName, condSQL)
 				} else {
-					if len(session.statement.JoinStr) > 0 {
-						joinStr = session.statement.JoinStr
+					if joinStr != "" {
 						sqlStr = fmt.Sprintf("SELECT * FROM %s %s WHERE %s LIMIT 1", tableName, joinStr, condSQL)
 					} else {
 						sqlStr = fmt.Sprintf("SELECT * FROM %s WHERE %s LIMIT 1", tableName, condSQL)
@@ -61,8 +63,7 @@ func (session *Session) Exist(bean ...interface{}) (bool, error) {
 				} else if session.engine.dialect.DBType() == core.ORACLE {
 					sqlStr = fmt.Sprintf("SELECT * FROM  %s WHERE ROWNUM=1", tableName)
 				} else {
-					if len(session.statement.JoinStr) > 0 {
-						joinStr = session.statement.JoinStr
+					if joinStr != "" {
 						sqlStr = fmt.Sprintf("SELECT * FROM %s %s LIMIT 1", tableName, joinStr)
 					} else {
 						sqlStr = fmt.Sprintf("SELECT * FROM %s LIMIT 1", tableName)
