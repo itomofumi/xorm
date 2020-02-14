@@ -9,7 +9,7 @@ Xorm is a simple and powerful ORM for Go.
 [![Join the chat at https://img.shields.io/discord/323460943201959939.svg](https://img.shields.io/discord/323460943201959939.svg)](https://discord.gg/HuR2CF3)
 
 ## 修正点
-- Exit()
+- Exist()
 テーブル結合時の挙動
 https://github.com/itomofumi/xorm/pull/1/files
 
