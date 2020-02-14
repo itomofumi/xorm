@@ -8,6 +8,11 @@ Xorm is a simple and powerful ORM for Go.
 [![](https://goreportcard.com/badge/github.com/go-xorm/xorm)](https://goreportcard.com/report/github.com/go-xorm/xorm) 
 [![Join the chat at https://img.shields.io/discord/323460943201959939.svg](https://img.shields.io/discord/323460943201959939.svg)](https://discord.gg/HuR2CF3)
 
+## 修正点
+- Exit()
+テーブル結合時の挙動
+https://github.com/itomofumi/xorm/pull/1/files
+
 ## Features
 
 * Struct <-> Table Mapping Support
