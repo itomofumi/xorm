@@ -166,8 +166,9 @@ func TestExistStructForJoin(t *testing.T) {
 		Select("empsetting.id").
 		Join("INNER", "check_list", "check_list.id = salary.lid").
 		Join("LEFT", "empsetting", "empsetting.id = check_list.eid")
-	_, err = session.Exist()
+	has, err = session.Exist()
 	assert.Error(t, err)
+	assert.False(t, has)
 
 	session.Table("salary").
 		Select("empsetting.id").
