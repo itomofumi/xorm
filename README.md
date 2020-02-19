@@ -13,6 +13,9 @@ Xorm is a simple and powerful ORM for Go.
 テーブル結合時の挙動
 https://github.com/itomofumi/xorm/pull/1/files
 
+- 本家にてmaster margeされました
+https://gitea.com/xorm/xorm/pulls/1520
+
 ## Features
 
 * Struct <-> Table Mapping Support
